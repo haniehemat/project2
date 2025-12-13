@@ -1,0 +1,63 @@
+body {
+    background: #f2f4f8;
+    font-family: "IRANSans", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+.form{
+    margin: 50px;
+        background: #fff;
+    padding: 25px 25px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+.label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #444;
+}
+.input {
+    width: 95%;
+    padding: 12px;
+    margin-bottom: 18px;
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    transition: 0.25s;
+}
+input:focus {
+    border-color: #1d8041;
+    box-shadow: 0 0 6px rgba(28, 142, 68, 0.3);
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background: #348656;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.25s;
+}
+.keep {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 20px;
+    padding-bottom: 40px;    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.keep label {
+    cursor: pointer;
+    font-family:"IRANSans", sans-serif;
+}
+

@@ -1,0 +1,55 @@
+@if (action=='list') {
+<div>
+    <button (click)="add()">add</button>
+</div>
+<table>
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>نام</th>
+            <th>نام خانوادگی</th>
+            <th>سن</th>
+            <th>کد ملی</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (member of data; track $index) {
+        <tr>
+            <td>{{member.id}}</td>
+            <td>{{member.name}}</td>
+            <td>{{member.family}}</td>
+            <td>{{member.age}}</td>
+            <td>{{member.cod}}</td>
+            <td>
+                <button>ویرایش</button>
+                <button>حذف</button>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+}
+@else {
+<form  class="Form2" (ngSubmit)="save()">
+    <div>
+        <input [(ngModel)]="item.id" id="id" name="id" type="number" placeholder="id">
+    </div>
+    <div>
+        <input [(ngModel)]="item.name" id="name" name="name" type="text" placeholder="نام ">
+    </div>
+    <div>
+        <input [(ngModel)]="item.family" id="family" name="family" type="text" placeholder="نام خانوادگی">
+    </div>
+    <div>
+        <input [(ngModel)]="item.age" id="age" name="age" type="number" placeholder="سن">
+    </div>
+      <div>
+        <input [(ngModel)]="item.cod"id="cod" name="cod" type="number" placeholder="کدملی">
+    </div>
+    <div>
+        <button  type="submit">تایید</button>
+        <button (click)="cancel()" type="submit">انصراف</button>
+    </div>
+</form>
+}
