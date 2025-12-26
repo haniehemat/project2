@@ -8,40 +8,56 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './members-page.scss',
 })
 export class MembersPage implements OnInit {
-save() {
-this.membersService.add(this.item);
-this.refreshData();
-this.action='list';
-}
-item:memberItem={
-  id: 0,
-  name: '',
-  family: '',
-  age: 0,
-  cod: 0
-};
-cancel() {
-  this.action='list';
-}
-  action:string='list';
-  ngOnInit(): void {
-   this.refreshData();
+  remove(member: memberItem) {
+    this.item = { ...member }
+    this.action = 'remove';
   }
- membersService=inject(MembersService)
-add() {
-  this.action='add';
-//this.refreshData();
-}
-data:memberItem[]=[];
- refreshData(){
-  this.data=this.membersService.list();
- }
+  edit(member: memberItem) {
+    this.item = { ...member };
+    this.action = 'edit';
+  }
+  save() {
+      if (this.action == 'add') {
+      this.membersService.add(this.item);
+    }
+    else if (this.action == 'edit') {
+      this.membersService.update(this.item);
+    }
+    else if (this.action == 'remove') {
+      this.membersService.remove(this.item);
+    }
+    this.refreshData();
+    this.action = 'list';
+  }
+  item: memberItem = {
+    id: 0,
+    name: '',
+    family: '',
+    age: 0,
+    cod: 0
+  };
+  cancel() {
+    this.action = 'list';
+  }
+  action: string = 'list';
+  ngOnInit(): void {
+    this.refreshData();
+  }
+  membersService = inject(MembersService)
+  add() {
+    this.action = 'add';
+    //this.refreshData();
+  }
+  data: memberItem[] = [];
+  refreshData() {
+    this.data = this.membersService.list();
+  }
 
 }
-export interface memberItem{
-  id:number;
-  name:string;
-  family:string;
-  age:number;
-  cod:number;
+export interface memberItem {
+  id: number;
+  name: string;
+  family: string;
+  age: number;
+  cod: number;
 }
