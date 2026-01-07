@@ -1,0 +1,43 @@
+@if (action=='list') {
+<div>
+    <button (click)="add()">add</button>
+</div>
+<table>
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>نام</th>
+            <th>نام خانوادگی</th>
+            <th>سن</th>
+            <th>کد ملی</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- @for (member of data; track $index) {
+        <tr>
+            <td>{{member.id}}</td>
+            <td>{{member.name}}</td>
+            <td>{{member.family}}</td>
+            <td>{{member.age}}</td>
+            <td>{{member.cod}}</td>
+            <td>
+                <button (click)="edit(member)">ویرایش</button>
+                <button (click)="remove(member)">حذف</button>
+            </td>
+        </tr>
+        } -->
+    </tbody>
+</table>
+}
+@else {
+        @if (action=='remove')
+     {<div class="alert">آیا از حذف کردن اطمینان دارین</div>}
+<form class="Form2" (ngSubmit)="save()">
+
+    <div>
+        <button type="submit">تایید</button>
+        <button (click)="cancel()" type="submit">انصراف</button>
+    </div>
+</form>
+}
