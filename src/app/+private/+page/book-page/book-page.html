@@ -1,3 +1,30 @@
+<my-crud
+[myaction]="action"
+(onAdd)="add()"
+(onCancle)="cancel()"
+[column]="columns"
+[data]="data"
+(onEdit)="edit($event)"
+(onRemove)="remove($event)"
+(onSave)="save()"
+>
+    <div>
+        <input [disabled]="action=='edit'" [disabled]="action=='edit'||action=='remove'" [(ngModel)]="item.id" id="id"
+            name="id" type="text" placeholder="شناسه">
+    </div>
+    <div>
+        <input [disabled]="action=='remove'" [(ngModel)]="item.title" id="title" name="title" type="text" placeholder="عنوان">
+    </div>
+    <div>
+        <input [disabled]="action=='remove'" [(ngModel)]="item.writer" id="writer" name="writer" type="text" placeholder="نویسنده">
+    </div>
+    <div>
+        <input [disabled]="action=='remove'" [(ngModel)]="item.publisher" id="publisher" name="publisher" type="text" placeholder="ناشر">
+    </div>
+    <div>
+        <input [disabled]="action=='remove'" [(ngModel)]="item.price" id="price" name="price" type="number" placeholder="قیمت">
+    </div>
+</my-crud>
 @if(action=='list'){
 <div>
     <button (click)="add()">add</button>

@@ -1,43 +1,47 @@
-@if (action=='list') {
+@if(myaction=='list'){
 <div>
-    <button (click)="add()">add</button>
+    <button (click)="onAdd.emit()">add</button>
 </div>
 <table>
     <thead>
         <tr>
-            <th>id</th>
-            <th>نام</th>
-            <th>نام خانوادگی</th>
-            <th>سن</th>
-            <th>کد ملی</th>
+            @for (col of column; track $index) {
+            <th>{{col.title}}</th>
+            }
             <th></th>
         </tr>
+        <!-- <tr>
+            <th><input type="text" placeholder="شناسه"></th>
+            <th><input type="text" placeholder="عنوان"></th>
+            <th><input type="text" placeholder="نویسنده"></th>
+            <th><input type="text" placeholder="ناشر"></th>
+            <th><input type="text" placeholder="قیمت"></th>
+            <th></th>
+        </tr> -->
     </thead>
     <tbody>
-        <!-- @for (member of data; track $index) {
+        @for(i of data; track $index){
         <tr>
-            <td>{{member.id}}</td>
-            <td>{{member.name}}</td>
-            <td>{{member.family}}</td>
-            <td>{{member.age}}</td>
-            <td>{{member.cod}}</td>
-            <td>
-                <button (click)="edit(member)">ویرایش</button>
-                <button (click)="remove(member)">حذف</button>
+            @for (col of column; track $index) {
+            <td>{{i[col.field]}}</td>
+            }
+            <td> <button (click)="onEdit.emit(i)">ویرایش</button>
+                <button (click)="onRemove.emit(i)">حذف</button>
+
             </td>
         </tr>
-        } -->
+        }
     </tbody>
 </table>
 }
 @else {
-        @if (action=='remove')
-     {<div class="alert">آیا از حذف کردن اطمینان دارین</div>}
-<form class="Form2" (ngSubmit)="save()">
-
+@if (myaction=='remove')
+{<div class="alert">آیا از حذف کردن اطمینان دارین</div>}
+<form (ngSubmit)="onSave.emit()" class="Form2">
+<ng-content></ng-content>
     <div>
         <button type="submit">تایید</button>
-        <button (click)="cancel()" type="submit">انصراف</button>
+        <button (click)="onCancle.emit()" type="submit">انصراف</button>
     </div>
 </form>
 }
