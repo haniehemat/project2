@@ -16,18 +16,21 @@ export class BookPage extends BaseCRUDpage<BookItem> implements OnInit {
   override dataService = inject(BookService);
   ngOnInit(): void {
     this.refreshData();
-    // this.item={
-    //   publisher:'',
-    //   title:'',
-    //   writer:''
-    // }
+    this.item={
+      publisher:'',
+      title:'',
+      writer:'',
+      price:0
+    }
   }
   override addPrepair(): void {
-    // this.item = {
-    //   publisher: '',
-    //   title: '',
-    //   writer: '',
+    this.item = {
+      publisher: '',
+      title: '',
+      writer: '',
+      price:0
   };
+}
   columns: column[] = [
     { field: 'id', title: 'شناسه' },
     { field: 'title', title: 'عنوان' },

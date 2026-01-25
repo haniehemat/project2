@@ -15,21 +15,21 @@ export class MembersPage extends BaseCRUDpage<memberItem> implements OnInit {
   override dataService = inject(MembersService);
   ngOnInit(): void {
     this.refreshData();
-    // this.item={
-    //   name:'',
-    //   family:'',
-    //   age:'',
-    //   cod;''
-    // }
+    this.item={
+      name:'',
+      family:'',
+      age:0,
+      cod:0
+    }
   }
-  // // override addPrepair(): void {
-  // //   this.item={
-  // //     name:'',
-  // //     family:'',
-  // //     age:'',
-  // //     cod:''
-  // //   };
-  // }
+   override addPrepair(): void {
+    this.item={
+    name:'',
+    family:'',
+    age:0,
+    cod:0
+ };
+  }
   columns: column[] = [
     { field: 'id', title: 'شناسه' },
     { field: 'name', title: 'نام' },
